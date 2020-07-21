@@ -3,14 +3,14 @@ services:
     - docker 
 env:
     global:
-        - SHA=$(git rev-parse HEAD) 
+        - SHA=$(git rev-parse HEAD)
         - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
-    - openssl aes-256-cbc -K $encrypted_da2886fcba80_key -iv $encrypted_da2886fcba80_iv -in fabricaaraujo-e9550-0f5107defc2f.json.enc -out fabricaaraujo-e9550-0f5107defc2f.json -d
+    - openssl aes-256-cbc -K $encrypted_da2886fcba80_key -iv $encrypted_da2886fcba80_iv -in fabricaaraujo-e9550-0f5107defc2f.json.enc -out service-account.json -d
     - curl https://sdk.cloud.google.com | bash > /dev/null;
     - source $HOME/google-cloud-sdk/path.bash.inc
     - gcloud components update kubectl
-    - gcloud auth activate-service-account --key-file fabricaaraujo-e9550-0f5107defc2f.json
+    - gcloud auth activate-service-account --key-file service-account.json
     - gcloud config set project fabricaaraujo-e9550
     - gcloud config set compute/zone southamerica-east1-a
     - gcloud container clusters get-credentials multi-cluster
