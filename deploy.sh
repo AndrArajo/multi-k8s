@@ -1,4 +1,4 @@
-docker build -t andrarajo/multi-client:latest -t andrarajo/multi-client:$SHA -f ./client-react/Dockerfile ./client-react
+docker build -t andrarajo/multi-client:latest -t andrarajo/multi-client:$SHA -f ./client_react/Dockerfile ./client_react
 docker build -t andrarajo/multi-server:latest -t andrarajo/multi-server:$SHA -f ./server/Dockerfile ./server
 docker build -t andrarajo/multi-worker:latest -t andrarajo/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
